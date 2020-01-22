@@ -68,12 +68,12 @@ class Armada extends Sprite{
         while(it.hasNext()){
             Sprite s = it.next();
             s.state = (state/10)%2;
-            if (speed_y != 0) s.y+= speed_y;
-            else s.x+=speed_x;
+            /*if (speed_y != 0) s.y+= speed_y;
+            else s.x+=speed_x;*/
             if (s.act()) it.remove();
-            else if (Math.random()<0.005f){
+            /*else if (Math.random()<0.005f){
                 missile.add(new Projectile(R.mipmap.missile,s.x+missileDx,s.y+missileDy,+15));
-            }
+            }*/
         }
 
         return false;
@@ -98,6 +98,15 @@ class Armada extends Sprite{
                 if (bbox.intersect(a.getBoundingBox())){
                     a.hit = true;
                     p.hit = true;
+                    RectF intersection = new RectF();
+
+                    intersection.setIntersect(bbox,a.getBoundingBox());
+                    if (intersection.width() > intersection.height()){
+                        p.hitH = true;
+                    } else {
+
+                    }
+
                 }
             }
         }

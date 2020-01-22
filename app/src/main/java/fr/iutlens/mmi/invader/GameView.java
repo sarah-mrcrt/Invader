@@ -10,7 +10,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
 
 import fr.iutlens.mmi.invader.utils.RefreshHandler;
 import fr.iutlens.mmi.invader.utils.SpriteSheet;
@@ -31,10 +30,10 @@ public class GameView extends View implements TimerAction {
     //liste des sprites à afficher
 
 
-    private Armada armada;
-    private Canon canon;
+    private Armada briques;
+    private Canon raquette;
     private List<Projectile> missile;
-    private List<Projectile> laser;
+    private List<Projectile> balle;
 
 
     public GameView(Context context) {
@@ -67,15 +66,16 @@ public class GameView extends View implements TimerAction {
         SpriteSheet.register(R.mipmap.missile,4,1,this.getContext());
         SpriteSheet.register(R.mipmap.laser,1,1,this.getContext());
         SpriteSheet.register(R.mipmap.canon,1,1,this.getContext());
+        SpriteSheet.register(R.mipmap.ball,1,1,this.getContext());
 
         transform = new Matrix();
         reverse = new Matrix();
 
         missile = new ArrayList<>();
-        laser = new ArrayList<>();
+        balle = new ArrayList<>();
 
-        armada = new Armada(R.mipmap.alien,missile);
-        canon = new Canon(R.mipmap.canon,800, 2200,laser);
+        briques = new Armada(R.mipmap.alien,missile);
+        raquette = new Canon(R.mipmap.canon,800, 2200, balle);
 
 
 //        hero = new Hero(R.drawable.running_rabbit,SPEED);
@@ -108,12 +108,13 @@ public class GameView extends View implements TimerAction {
         if (this.isShown()) { // Si la vue est visible
             timer.scheduleRefresh(30); // programme le prochain rafraichissement
 
-            armada.testIntersection(laser);
-            armada.act();
-            canon.act();
+            briques.testIntersection(balle);
+            raquette.testIntersection(balle);
 
+            briques.act();
+            raquette.act();
             act(missile);
-            act(laser);
+            act(balle);
 
             invalidate(); // demande à rafraichir la vue
         }
@@ -138,11 +139,11 @@ public class GameView extends View implements TimerAction {
         for(Sprite s : missile){
             s.paint(canvas);
         }
-        for(Sprite s : laser){
+        for(Sprite s : balle){
             s.paint(canvas);
         }
-        canon.paint(canvas);
-        armada.paint(canvas);
+        raquette.paint(canvas);
+        briques.paint(canvas);
 
 
         // Dessin des différents éléments
@@ -182,15 +183,15 @@ public class GameView extends View implements TimerAction {
     }
 
     public void onLeft() {
-        canon.setDirection(-1);
+        raquette.setDirection(-1);
     }
 
     public void onRight(){
-        canon.setDirection(+1);
+        raquette.setDirection(+1);
     }
 
     public void onFire(){
-        canon.fire();
+        raquette.fire();
 
     }
 

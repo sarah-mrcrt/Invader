@@ -22,7 +22,6 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
          return hit;
      }
 
-
     Sprite(int id, float x, float y){
         this.sprite = SpriteSheet.get(id);
         this.x = x;
@@ -30,6 +29,8 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
         state = 0;
         hit = false;
     }
+
+
 
 
     public void paint(Canvas canvas){
