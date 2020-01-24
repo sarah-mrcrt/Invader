@@ -45,7 +45,7 @@ class Raquette extends Sprite {
 
 
     public void fire() {
-        laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 5));
+        laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 20));
     }
 
     public void testIntersection(List<Projectile> balle) {
@@ -63,6 +63,10 @@ class Raquette extends Sprite {
                         p.hitV = true;
                     }
                 }
-            }
+        }
+    }
+
+    public void setX(float x) {
+        this.x = x-sprite.w/2;
     }
 }

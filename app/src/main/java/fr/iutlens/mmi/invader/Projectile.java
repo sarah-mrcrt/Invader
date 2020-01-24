@@ -28,19 +28,18 @@ class Projectile extends Sprite {
             vy = -vy;
         }
 
-        if(x<0 || hitV){
-            vx = -vy;
-        }
-
-        if (x<0 || x+ sprite.w > GameView.SIZE_X){
+        if (x<0 || x+ sprite.w > GameView.SIZE_X || hitV){
             vx = -vx;
         }
+
         y += vy;
         x += vx;
         frame++;
 
         hitH = false;
+        hitV = false;
         return  y> GameView.SIZE_Y;
-
     }
+
+
 }

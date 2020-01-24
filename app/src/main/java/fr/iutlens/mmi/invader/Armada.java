@@ -87,7 +87,6 @@ class Armada extends Sprite{
             if (result == null) result = boundingBox;
            else result.union(boundingBox);
         }
-
         return result;
     }
 

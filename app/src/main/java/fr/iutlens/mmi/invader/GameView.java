@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
 import fr.iutlens.mmi.invader.utils.TimerAction;
 
 
-public class GameView extends View implements TimerAction {
+public class GameView extends View implements TimerAction, View.OnTouchListener {
     private RefreshHandler timer;
 
     // taille de l'écran virtuel
@@ -85,14 +86,10 @@ public class GameView extends View implements TimerAction {
         // Gestion du rafraichissement de la vue. La méthode update (juste en dessous)
         // sera appelée toutes les 30 ms
         timer = new RefreshHandler(this);
+        timer.scheduleRefresh(30);
 
-        // Un clic sur la vue lance (ou relance) l'animation
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!timer.isRunning()) timer.scheduleRefresh(30);
-            }
-        });
+        this.setOnTouchListener(this);
+
     }
 
 
@@ -195,4 +192,30 @@ public class GameView extends View implements TimerAction {
 
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        //Mettre un intervalle de click pour la raqu
+        //coord[0] pour X et coord[1] pour Y
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN ||
+                motionEvent.getAction() == MotionEvent.ACTION_MOVE  ){
+            float coord[] = {motionEvent.getX(),motionEvent.getY()};
+            reverse.mapPoints(coord);
+
+            if (coord[1]> SIZE_Y *0.8f){
+                raquette.setX(coord[0]);
+            }
+
+
+            return true;
+
+        }
+
+        return false;
+    }
 }
+
+//Calculer vitesse raquette (Xnouveau = Xancien + V --->  VX= Xnouveau - Xancien)
+//Raquette avec coté bout ront donc changer intersecton
+//Mettre un intervalle de click pour la raquette (pour ne pas suivre la balle du doigt)
+//Jeu finis pouvoir recommencer
+//Quand la balle est à l'extérieur, jeu terminé

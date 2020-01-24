@@ -30,9 +30,6 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
         hit = false;
     }
 
-
-
-
     public void paint(Canvas canvas){
         sprite.paint(canvas,state,x,y);
     }
