@@ -201,21 +201,16 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
             float coord[] = {motionEvent.getX(),motionEvent.getY()};
             reverse.mapPoints(coord);
 
-            if (coord[1]> SIZE_Y *0.8f){
+            if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.92f && coord[0]> SIZE_X *0.08f){
                 raquette.setX(coord[0]);
             }
-
-
             return true;
-
         }
-
         return false;
     }
 }
 
 //Calculer vitesse raquette (Xnouveau = Xancien + V --->  VX= Xnouveau - Xancien)
-//Raquette avec coté bout ront donc changer intersecton
-//Mettre un intervalle de click pour la raquette (pour ne pas suivre la balle du doigt)
+//Raquette avec coté bout rond donc changer intersecton
 //Jeu finis pouvoir recommencer
 //Quand la balle est à l'extérieur, jeu terminé
