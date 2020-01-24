@@ -211,6 +211,11 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 }
 
 //Calculer vitesse raquette (Xnouveau = Xancien + V --->  VX= Xnouveau - Xancien)
-//Raquette avec coté bout rond donc changer intersecton
+//Changer la trajetoire de la balle
+//Raquette avec coté bout rond donc changer intersection
+//Mettre une interface (jouer)
+//Lancer directement au click
+//2 vies
 //Jeu finis pouvoir recommencer
 //Quand la balle est à l'extérieur, jeu terminé
+//Design

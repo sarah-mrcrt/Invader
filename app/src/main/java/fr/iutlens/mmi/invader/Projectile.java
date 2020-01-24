@@ -31,7 +31,6 @@ class Projectile extends Sprite {
         if (x<0 || x+ sprite.w > GameView.SIZE_X || hitV){
             vx = -vx;
         }
-
         y += vy;
         x += vx;
         frame++;
@@ -40,6 +39,6 @@ class Projectile extends Sprite {
         hitV = false;
         return  y> GameView.SIZE_Y;
     }
-
-
 }
+
+//VX= Xnouveau - Xancien)
