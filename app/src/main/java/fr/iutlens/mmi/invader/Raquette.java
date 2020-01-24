@@ -10,14 +10,14 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
  * Created by dubois on 05/12/2018.
  */
 
-class Canon extends Sprite {
+class Raquette extends Sprite {
     public static final int SPEED = 12;
     private final List<Projectile> laser;
     private final int dxLaser;
     private final int dyLaser;
     int vx = 0;
 
-    Canon(int id, float x, float y, List<Projectile> laser) {
+    Raquette(int id, float x, float y, List<Projectile> laser) {
         super(id, x, y);
         this.laser = laser;
         final SpriteSheet laserSprite = SpriteSheet.get(R.mipmap.laser);
@@ -46,7 +46,6 @@ class Canon extends Sprite {
 
     public void fire() {
         laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 5));
-
     }
 
     public void testIntersection(List<Projectile> balle) {
@@ -61,13 +60,9 @@ class Canon extends Sprite {
                     if (intersection.width() > intersection.height()){
                         p.hitH = true;
                     } else {
-
+                        p.hitV = true;
                     }
-
                 }
             }
-
-
     }
-
 }

@@ -31,7 +31,7 @@ public class GameView extends View implements TimerAction {
 
 
     private Armada briques;
-    private Canon raquette;
+    private Raquette raquette;
     private List<Projectile> missile;
     private List<Projectile> balle;
 
@@ -75,7 +75,7 @@ public class GameView extends View implements TimerAction {
         balle = new ArrayList<>();
 
         briques = new Armada(R.mipmap.alien,missile);
-        raquette = new Canon(R.mipmap.canon,800, 2200, balle);
+        raquette = new Raquette(R.mipmap.canon,800, 2200, balle);
 
 
 //        hero = new Hero(R.drawable.running_rabbit,SPEED);

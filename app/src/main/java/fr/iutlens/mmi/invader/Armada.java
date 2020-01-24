@@ -104,12 +104,10 @@ class Armada extends Sprite{
                     if (intersection.width() > intersection.height()){
                         p.hitH = true;
                     } else {
-
+                        p.hitV = true;
                     }
-
                 }
             }
         }
-
     }
 }
