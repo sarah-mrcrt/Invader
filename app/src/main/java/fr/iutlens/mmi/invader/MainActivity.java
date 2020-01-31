@@ -16,13 +16,6 @@ public class MainActivity extends AppCompatActivity {
         gameView = findViewById(R.id.gameView);
     }
 
-    public void onLeft(View view) {
-        gameView.onLeft();
-    }
-
-    public void onRight(View view) {
-        gameView.onRight();
-    }
 
     public void onFire(View view) {
         gameView.onFire();

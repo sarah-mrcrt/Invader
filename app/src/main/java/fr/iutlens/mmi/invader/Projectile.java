@@ -7,8 +7,8 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
  */
 
 class Projectile extends Sprite {
-    private int vy;
-    private int vx;
+    int vy;
+    int vx;
     private int frame;
     public boolean hitH;
     public boolean hitV;
@@ -30,6 +30,7 @@ class Projectile extends Sprite {
 
         if (x<0 || x+ sprite.w > GameView.SIZE_X || hitV){
             vx = -vx;
+
         }
         y += vy;
         x += vx;

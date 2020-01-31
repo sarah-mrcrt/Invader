@@ -11,11 +11,11 @@ import fr.iutlens.mmi.invader.utils.SpriteSheet;
  */
 
 class Raquette extends Sprite {
-    public static final int SPEED = 12;
     private final List<Projectile> laser;
     private final int dxLaser;
     private final int dyLaser;
-    int vx = 0;
+    float vx;
+    private float x_old;
 
     Raquette(int id, float x, float y, List<Projectile> laser) {
         super(id, x, y);
@@ -23,25 +23,21 @@ class Raquette extends Sprite {
         final SpriteSheet laserSprite = SpriteSheet.get(R.mipmap.laser);
         dxLaser = sprite.w/2- laserSprite.w/2;
         dyLaser = -laserSprite.h;
+        x_old = x;
+        vx=0;
     }
 
     @Override
     public boolean act() {
         RectF bounds = getBoundingBox();
-        int dx = vx * SPEED;
-        if (bounds.left+dx>0 && bounds.right+dx< GameView.SIZE_X){
-            x += dx;
-        } else {
-            vx = 0;
-        }
+        //Valeur : Vitesse x 12 = dx
+
+        vx = x - x_old;
+        x_old = x;
+
         return false;
     }
 
-    public void setDirection(int i) {
-        vx += i;
-        if (vx<-1) vx = -1;
-        else if (vx>1) vx = 1;
-    }
 
 
     public void fire() {
@@ -59,6 +55,7 @@ class Raquette extends Sprite {
                     intersection.setIntersect(bbox,getBoundingBox());
                     if (intersection.width() > intersection.height()){
                         p.hitH = true;
+                        p.vx += vx;
                     } else {
                         p.hitV = true;
                     }
@@ -70,3 +67,4 @@ class Raquette extends Sprite {
         this.x = x-sprite.w/2;
     }
 }
+//Mettre un max à la vitesse de la raquette

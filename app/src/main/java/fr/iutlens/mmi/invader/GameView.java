@@ -174,33 +174,25 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         // Dimensions à notre disposition
         RectF dst = new RectF(0,0,w,h);
 
-        // Calcul de la transformation désirée (et de son inverse)
+        // Calcule de la transformation désirée (et de son inverse)
         transform.setRectToRect(src,dst, Matrix.ScaleToFit.CENTER);
         transform.invert(reverse);
     }
 
-    public void onLeft() {
-        raquette.setDirection(-1);
-    }
-
-    public void onRight(){
-        raquette.setDirection(+1);
-    }
 
     public void onFire(){
         raquette.fire();
-
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        //Mettre un intervalle de click pour la raqu
+        //Mettre un intervalle de click pour la raquette
         //coord[0] pour X et coord[1] pour Y
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN ||
                 motionEvent.getAction() == MotionEvent.ACTION_MOVE  ){
             float coord[] = {motionEvent.getX(),motionEvent.getY()};
             reverse.mapPoints(coord);
-
+            //SIZE_X = Taille de l'écran par rapport à X
             if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.92f && coord[0]> SIZE_X *0.08f){
                 raquette.setX(coord[0]);
             }
