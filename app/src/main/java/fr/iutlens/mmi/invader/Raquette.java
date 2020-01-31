@@ -38,17 +38,17 @@ class Raquette extends Sprite {
             //Vitesse maximum que peut donner la raquette
             vx = 15;
         }
-
         return false;
 
     }
 
 
-
+    //Trajectoire de la balle au premier lancer
     public void fire() {
-        laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 5));
+        laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 0));
     }
 
+    //Trajectoire de la balle selon l'interesction de la raquette
     public void testIntersection(List<Projectile> balle) {
         for(Projectile p : laser){
             RectF bbox = p.getBoundingBox();
@@ -58,20 +58,27 @@ class Raquette extends Sprite {
                     RectF intersection = new RectF();
 
                     //Trajcetoire dépendante du centre
-
-                    //Trajectoire dépendante des côtés
                     intersection.setIntersect(bbox,getBoundingBox());
                     if (intersection.width() > intersection.height()){
                         //Quand le projectile est touché de manière horizontale
-                        //ici seulement le côté de l'écran
+                        //ici le côté de haut l'écran
                         p.hitH = true;
                         //Changer la trajetoire de la balle (de manière horizontale)
                         p.vx += vx;
                     } else {
                         //Quand le projectile est touché de manière verticale
-                        //ici seulement les côtés de l'écran
+                        //ici seulement les côtés gauche et droit de l'écran
                         p.hitV = true;
                     }
+
+                    //Trajectoire dépendante des côtés
+                    if(intersection.width() <0.9f ){
+                        p.vx += vx + 0.2f;
+                    }
+                    if(intersection.width() >0.92f){
+                        p.vx += vx - 0.2f;
+                    }
+
                 }
         }
     }
@@ -80,6 +87,12 @@ class Raquette extends Sprite {
         this.x = x-sprite.w/2;
     }
 }
-//Mettre une interface (jouer)
-//2 vies
-//Raquette avec coté bout rond donc changer intersection
+
+//Detecter d'abord les bords de la raquette
+//Dx =  équation de la droite opour changer le vx
+
+
+//1 - Récuperer la Zone carré sur la raquette (intervalle de 0 à 1)
+//2 - Coté arrondi = hauteur/2 (à gauche et à droite)
+//3 - Voir les coordonnée de la balle et si elle appartient à l'intervalle de la raquette
+//4 - Voir rn x et en y

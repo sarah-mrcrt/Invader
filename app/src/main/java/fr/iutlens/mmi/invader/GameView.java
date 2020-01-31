@@ -29,8 +29,6 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     private Matrix reverse;
 
     //liste des sprites à afficher
-
-
     private Armada briques;
     private Raquette raquette;
     private List<Projectile> missile;
@@ -203,8 +201,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 }
 
 //Lancer directement au click
-//Quand la balle est à l'extérieur, jeu terminé
-//Jeu finis pouvoir recommencer
+//Pouvoir gagner ou perdre (recommencer ?)
 
 //Mettre une interface (jouer)
 //2 vies
