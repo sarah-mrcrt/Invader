@@ -41,5 +41,3 @@ class Projectile extends Sprite {
         return  y> GameView.SIZE_Y;
     }
 }
-
-//VX= Xnouveau - Xancien)

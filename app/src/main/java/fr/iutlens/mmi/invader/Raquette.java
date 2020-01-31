@@ -30,12 +30,17 @@ class Raquette extends Sprite {
     @Override
     public boolean act() {
         RectF bounds = getBoundingBox();
-        //Valeur : Vitesse x 12 = dx
-
+        //Calcule de la nouvelle vitesse de la Raquette (celle-ci influe sur la balle)
         vx = x - x_old;
         x_old = x;
 
+        if(vx>15) {
+            //Vitesse maximum que peut donner la raquette
+            vx = 15;
+        }
+
         return false;
+
     }
 
 
@@ -52,11 +57,19 @@ class Raquette extends Sprite {
                     p.hit = true;
                     RectF intersection = new RectF();
 
+                    //Trajcetoire dépendante du centre
+
+                    //Trajectoire dépendante des côtés
                     intersection.setIntersect(bbox,getBoundingBox());
                     if (intersection.width() > intersection.height()){
+                        //Quand le projectile est touché de manière horizontale
+                        //ici seulement le côté de l'écran
                         p.hitH = true;
+                        //Changer la trajetoire de la balle (de manière horizontale)
                         p.vx += vx;
                     } else {
+                        //Quand le projectile est touché de manière verticale
+                        //ici seulement les côtés de l'écran
                         p.hitV = true;
                     }
                 }
@@ -67,4 +80,6 @@ class Raquette extends Sprite {
         this.x = x-sprite.w/2;
     }
 }
-//Mettre un max à la vitesse de la raquette
+//Mettre une interface (jouer)
+//2 vies
+//Raquette avec coté bout rond donc changer intersection
