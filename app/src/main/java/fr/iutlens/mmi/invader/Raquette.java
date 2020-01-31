@@ -72,12 +72,7 @@ class Raquette extends Sprite {
                     }
 
                     //Trajectoire dépendante des côtés
-                    if(intersection.width() <0.9f ){
-                        p.vx += vx + 0.2f;
-                    }
-                    if(intersection.width() >0.92f){
-                        p.vx += vx - 0.2f;
-                    }
+
 
                 }
         }

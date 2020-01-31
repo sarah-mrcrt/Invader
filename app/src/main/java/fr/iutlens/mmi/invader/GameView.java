@@ -200,8 +200,8 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     }
 }
 
-//Lancer directement au click
 //Pouvoir gagner ou perdre (recommencer ?)
+//Lancer directement au click
 
 //Mettre une interface (jouer)
 //2 vies
