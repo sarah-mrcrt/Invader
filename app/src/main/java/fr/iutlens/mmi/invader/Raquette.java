@@ -83,7 +83,6 @@ class Raquette extends Sprite {
                     if(x+sprite.h/2 > bbox.centerX()){
                         p.vx += 20;
                     }
-
                 }
         }
     }
@@ -92,3 +91,6 @@ class Raquette extends Sprite {
         this.x = x-sprite.w/2;
     }
 }
+
+// Rebond vers le haut sur le côté de la raquette
+// Problème de rebond au centre
