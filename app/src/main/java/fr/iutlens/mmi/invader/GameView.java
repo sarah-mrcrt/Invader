@@ -101,6 +101,8 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     @Override
     public void update() {
         if (this.isShown()) { // Si la vue est visible
+            //CREER UNE FONCTION armada.empy -> SI ARMADA EST VIDE ALORS FIGEE L'ECRAN
+            //CODE POUR FIGER L ECRAN
             timer.scheduleRefresh(30); // programme le prochain rafraichissement
 
             briques.testIntersection(balle);
@@ -206,3 +208,4 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 //Mettre une interface (jouer)
 //2 vies
 //Design (xml)
+//Lancer une balle
