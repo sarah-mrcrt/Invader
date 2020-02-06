@@ -72,14 +72,17 @@ class Raquette extends Sprite {
                         //p.hitV = true;
                     //}
 
-                    //Trajectoire dépendante des côtés
+                    //Trajectoire dépendante des côtés :
+                    //1 - Récuperer la Zone carré sur la raquette (intervalle de 0 à 1)
+                    //2 - Coté arrondi = hauteur/2 (à gauche et à droite)
+                    //3 - Voir les coordonnée de la balle et si elle appartient à l'intervalle de la raquette
+
                     if(x+sprite.h/2 < bbox.centerX()){
                         p.vx += -20;
                     }
                     if(x+sprite.h/2 > bbox.centerX()){
                         p.vx += 20;
                     }
-
                 }
         }
     }
@@ -89,11 +92,5 @@ class Raquette extends Sprite {
     }
 }
 
-//Detecter d'abord les bords de la raquette
-//Dx =  équation de la droite opour changer le vx
-
-
-//1 - Récuperer la Zone carré sur la raquette (intervalle de 0 à 1)
-//2 - Coté arrondi = hauteur/2 (à gauche et à droite)
-//3 - Voir les coordonnée de la balle et si elle appartient à l'intervalle de la raquette
-//4 - Voir rn x et en y
+// Rebond vers le haut sur le côté de la raquette
+// Problème de rebond au centre

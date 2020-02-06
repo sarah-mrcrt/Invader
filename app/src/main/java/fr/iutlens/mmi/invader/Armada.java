@@ -13,7 +13,7 @@ import java.util.List;
 
 class Armada extends Sprite{
 
-    private final List<Alien> alien;
+    public final List<Alien> alien;
 
     private final List<Projectile> missile;
     private final int missileDx;
@@ -49,7 +49,7 @@ class Armada extends Sprite{
 
     @Override
     public boolean act() {
-
+/*
         RectF bounds = getBoundingBox();
         ++state;
 
@@ -63,7 +63,7 @@ class Armada extends Sprite{
             speed_y = 8;
             state = 0;
         }
-
+*/
         Iterator<Alien> it = alien.iterator();
         while(it.hasNext()){
             Sprite s = it.next();
