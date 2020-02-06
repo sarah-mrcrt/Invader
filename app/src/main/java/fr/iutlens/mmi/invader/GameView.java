@@ -22,7 +22,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 
     // taille de l'écran virtuel
     public final static int SIZE_X = 2000;
-    public final static int SIZE_Y = 2400;
+    public final static int SIZE_Y = 2600;
 
     // transformation (et son inverse)
     private Matrix transform;
@@ -191,7 +191,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
             float coord[] = {motionEvent.getX(),motionEvent.getY()};
             reverse.mapPoints(coord);
             //SIZE_X = Taille de l'écran par rapport à X
-            if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.92f && coord[0]> SIZE_X *0.08f){
+            if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.84f && coord[0]> SIZE_X *0.098f){
                 raquette.setX(coord[0]);
             }
             return true;

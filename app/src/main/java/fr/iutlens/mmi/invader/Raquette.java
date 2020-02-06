@@ -43,6 +43,7 @@ class Raquette extends Sprite {
     }
 
 
+
     //Trajectoire de la balle au premier lancer
     public void fire() {
         laser.add(new Projectile(R.mipmap.ball,x+dxLaser,y+dyLaser,-20, 0));
@@ -72,7 +73,9 @@ class Raquette extends Sprite {
                     }
 
                     //Trajectoire dépendante des côtés
+                    if(x+sprite.h/2 < bbox.centerX()){
 
+                    }
 
                 }
         }
