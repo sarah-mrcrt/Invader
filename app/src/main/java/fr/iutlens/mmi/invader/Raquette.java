@@ -66,15 +66,18 @@ class Raquette extends Sprite {
                         p.hitH = true;
                         //Changer la trajetoire de la balle (de manière horizontale)
                         p.vx += vx;
-                    } else {
+                    } //else {
                         //Quand le projectile est touché de manière verticale
                         //ici seulement les côtés gauche et droit de l'écran
-                        p.hitV = true;
-                    }
+                        //p.hitV = true;
+                    //}
 
                     //Trajectoire dépendante des côtés
                     if(x+sprite.h/2 < bbox.centerX()){
-
+                        p.vx += -20;
+                    }
+                    if(x+sprite.h/2 > bbox.centerX()){
+                        p.vx += 20;
                     }
 
                 }
