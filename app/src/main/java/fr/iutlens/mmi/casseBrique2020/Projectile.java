@@ -1,6 +1,4 @@
-package fr.iutlens.mmi.invader;
-
-import fr.iutlens.mmi.invader.utils.SpriteSheet;
+package fr.iutlens.mmi.casseBrique2020;
 
 /**
  * Created by dubois on 06/12/2018.

@@ -1,4 +1,4 @@
-package fr.iutlens.mmi.invader;
+package fr.iutlens.mmi.casseBrique2020;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import fr.iutlens.mmi.invader.utils.RefreshHandler;
-import fr.iutlens.mmi.invader.utils.SpriteSheet;
-import fr.iutlens.mmi.invader.utils.TimerAction;
+import fr.iutlens.mmi.casseBrique2020.utils.RefreshHandler;
+import fr.iutlens.mmi.casseBrique2020.utils.SpriteSheet;
+import fr.iutlens.mmi.casseBrique2020.utils.TimerAction;
 
 
 public class GameView extends View implements TimerAction, View.OnTouchListener {

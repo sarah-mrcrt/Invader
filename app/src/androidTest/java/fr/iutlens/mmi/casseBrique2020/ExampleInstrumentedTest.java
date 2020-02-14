@@ -1,4 +1,4 @@
-package fr.iutlens.mmi.invader;
+package fr.iutlens.mmi.casseBrique2020;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

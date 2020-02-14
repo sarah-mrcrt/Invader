@@ -1,4 +1,4 @@
-package fr.iutlens.mmi.invader;
+package fr.iutlens.mmi.casseBrique2020;
 
 import org.junit.Test;
 
