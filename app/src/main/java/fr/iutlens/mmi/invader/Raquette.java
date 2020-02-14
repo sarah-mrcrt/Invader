@@ -38,6 +38,11 @@ class Raquette extends Sprite {
             //Vitesse maximum que peut donner la raquette
             vx = 15;
         }
+        if(vx<-15) {
+            //Vitesse maximum que peut donner la raquette
+            vx = 15;
+        }
+
         return false;
 
     }

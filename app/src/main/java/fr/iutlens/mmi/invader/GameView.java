@@ -178,10 +178,12 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         transform.invert(reverse);
     }
 
-
+// size or isempty
     public void onFire(){
+       //if(Projectile.size>1)
         raquette.fire();
     }
+
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
