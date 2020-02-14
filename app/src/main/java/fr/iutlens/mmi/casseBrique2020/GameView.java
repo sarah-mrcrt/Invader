@@ -1,10 +1,13 @@
 package fr.iutlens.mmi.casseBrique2020;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -62,7 +65,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     private void init(AttributeSet attrs, int defStyle) {
 
         // Chargement des feuilles de sprites
-        SpriteSheet.register(R.mipmap.alien,2,1,this.getContext());
+        SpriteSheet.register(R.mipmap.alien,1,1,this.getContext());
         SpriteSheet.register(R.mipmap.missile,4,1,this.getContext());
         SpriteSheet.register(R.mipmap.laser,1,1,this.getContext());
         SpriteSheet.register(R.mipmap.canon,1,1,this.getContext());
@@ -74,7 +77,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         missile = new ArrayList<>();
         balle = new ArrayList<>();
 
-        briques = new Armada(R.mipmap.alien,missile);
+        briques = new Armada(R.mipmap.alien, missile);
         raquette = new Raquette(R.mipmap.canon,800, 2200, balle);
 
 
@@ -182,15 +185,19 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 
     // Lancer une balle
     public void onFire(){
-        //Quand, il n'y a plus de balle, la raquette en relance une
-       if(balle.isEmpty()){
-           raquette.fire();
-           fired++;
-       }
-       //Au bout de 3 lancer, mettre fin au jeu
-        /*if(fired >=3 && balle.isEmpty()){
 
-        }*/
+//       Log.d("balle",""+fired+" "+balle.size());
+       //Au bout de 3 lancer, mettre fin au jeu
+        if(fired >=3 && balle.isEmpty()){
+            Intent NextActivity = new Intent(getContext(),StartActivity.class);
+            getContext().startActivity(NextActivity);
+            ((Activity) getContext()).finish();
+        }
+        //Quand, il n'y a plus de balle, la raquette en relance une
+        if(balle.isEmpty()){
+            raquette.fire();
+            fired++;
+        }
 
     }
 
@@ -204,7 +211,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
             float coord[] = {motionEvent.getX(),motionEvent.getY()};
             reverse.mapPoints(coord);
             //SIZE_X = Taille de l'écran par rapport à X
-            if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.84f && coord[0]> SIZE_X *0.098f){
+            if (coord[1]> SIZE_Y *0.8f && coord[0]< SIZE_X *0.84f && coord[0]> SIZE_X *0.080f){
                 raquette.setX(coord[0]);
             }
             return true;
@@ -216,7 +223,4 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 
 }
 
-//Pouvoir gagner ou perdre (recommencer ?)
 //Lancer directement au click
-//3 Lancer avant la mort
-//Mettre une interface (jouer)
