@@ -26,7 +26,7 @@ class Armada extends Sprite{
         this.missile = missile;
         briques = new ArrayList<>();
 
-        for(int i = 6; i <10; ++i){
+        for(int i = 1; i <15; ++i){
             for(int j= 0; j< 10; ++j){
                 briques.add(new Alien(id,i*120,j*120));
             }

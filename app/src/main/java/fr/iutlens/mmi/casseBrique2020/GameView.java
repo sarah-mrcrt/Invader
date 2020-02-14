@@ -33,6 +33,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     private Raquette raquette;
     private List<Projectile> missile;
     private List<Projectile> balle;
+    private int fired;
 
 
     public GameView(Context context) {
@@ -178,10 +179,19 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         transform.invert(reverse);
     }
 
-// size or isempty
+
+    // Lancer une balle
     public void onFire(){
-       //if(Projectile.size>1)
-        raquette.fire();
+        //Quand, il n'y a plus de balle, la raquette en relance une
+       if(balle.isEmpty()){
+           raquette.fire();
+           fired++;
+       }
+       //Au bout de 3 lancer, mettre fin au jeu
+        /*if(fired >=3 && balle.isEmpty()){
+
+        }*/
+
     }
 
 
@@ -201,12 +211,12 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         }
         return false;
     }
+
+
+
 }
 
 //Pouvoir gagner ou perdre (recommencer ?)
 //Lancer directement au click
-
+//3 Lancer avant la mort
 //Mettre une interface (jouer)
-//2 vies
-//Design (xml)
-//Lancer une balle
