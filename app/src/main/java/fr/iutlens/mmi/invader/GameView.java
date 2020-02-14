@@ -132,7 +132,6 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
         // de la "camera"
 
         canvas.concat(transform);
-
         for(Sprite s : missile){
             s.paint(canvas);
         }

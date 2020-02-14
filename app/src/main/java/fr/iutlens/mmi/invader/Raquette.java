@@ -78,10 +78,10 @@ class Raquette extends Sprite {
                     //3 - Voir les coordonnée de la balle et si elle appartient à l'intervalle de la raquette
 
                     if(x+sprite.h/2 < bbox.centerX()){
-                        p.vx += -20;
+                        p.vx += -5;
                     }
                     if(x+sprite.h/2 > bbox.centerX()){
-                        p.vx += 20;
+                        p.vx += 5;
                     }
                 }
         }

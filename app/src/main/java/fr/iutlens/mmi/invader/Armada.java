@@ -13,7 +13,7 @@ import java.util.List;
 
 class Armada extends Sprite{
 
-    public final List<Alien> alien;
+    public final List<Alien> briques;
 
     private final List<Projectile> missile;
     private final int missileDx;
@@ -24,11 +24,11 @@ class Armada extends Sprite{
     public Armada(int id, List<Projectile> missile) {
         super(id,0,0);
         this.missile = missile;
-        alien = new ArrayList<>();
+        briques = new ArrayList<>();
 
         for(int i = 6; i <10; ++i){
             for(int j= 0; j< 10; ++j){
-                alien.add(new Alien(id,i*120,j*120));
+                briques.add(new Alien(id,i*120,j*120));
             }
         }
 
@@ -41,7 +41,7 @@ class Armada extends Sprite{
 
     @Override
     public void paint(Canvas canvas) {
-        for (Sprite s: alien
+        for (Sprite s: briques
              ) {
             s.paint(canvas);
         }
@@ -64,7 +64,9 @@ class Armada extends Sprite{
             state = 0;
         }
 */
-        Iterator<Alien> it = alien.iterator();
+
+// Casser les briques
+        Iterator<Alien> it = briques.iterator();
         while(it.hasNext()){
             Sprite s = it.next();
             s.state = (state/10)%2;
@@ -82,7 +84,7 @@ class Armada extends Sprite{
 
     public RectF getBoundingBox() {
         RectF result = null;
-        for (Alien s: alien
+        for (Alien s: briques
                 ) {
             final RectF boundingBox = s.getBoundingBox();
             if (result == null) result = boundingBox;
@@ -94,7 +96,7 @@ class Armada extends Sprite{
     public void testIntersection(List<Projectile> laser) {
         for(Projectile p : laser){
             RectF bbox = p.getBoundingBox();
-            for(Alien a: alien){
+            for(Alien a: briques){
                 if (bbox.intersect(a.getBoundingBox())){
                     a.hit = true;
                     p.hit = true;
