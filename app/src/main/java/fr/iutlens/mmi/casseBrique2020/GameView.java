@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -37,11 +38,13 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
     private List<Projectile> missile;
     private List<Projectile> balle;
     private int fired;
+    private MediaPlayer player;
 
 
     public GameView(Context context) {
         super(context);
         init(null, 0);
+
     }
 
     public GameView(Context context, AttributeSet attrs) {
@@ -63,6 +66,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
      * @param defStyle
      */
     private void init(AttributeSet attrs, int defStyle) {
+
 
         // Chargement des feuilles de sprites
         SpriteSheet.register(R.mipmap.alien,1,1,this.getContext());
@@ -192,6 +196,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
             Intent NextActivity = new Intent(getContext(),StartActivity.class);
             getContext().startActivity(NextActivity);
             ((Activity) getContext()).finish();
+            player.stop();
         }
         //Quand, il n'y a plus de balle, la raquette en relance une
         if(balle.isEmpty()){
