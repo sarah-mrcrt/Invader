@@ -112,4 +112,8 @@ class Armada extends Sprite{
             }
         }
     }
+
+    public boolean isEmpty() {
+        return briques.isEmpty();
+    }
 }
