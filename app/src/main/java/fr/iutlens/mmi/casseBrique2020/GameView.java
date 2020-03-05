@@ -188,7 +188,7 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 
 //       Log.d("balle",""+fired+" "+balle.size());
        //Au bout de 3 lancer, mettre fin au jeu
-        if(fired >=3 && balle.isEmpty() || briques.isEmpty()){
+        if((fired >=3 && balle.isEmpty()) || briques.isEmpty()){
             Intent NextActivity = new Intent(getContext(),StartActivity.class);
             getContext().startActivity(NextActivity);
             ((Activity) getContext()).finish();
@@ -198,7 +198,6 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
             raquette.fire();
             fired++;
         }
-
     }
 
 
@@ -223,4 +222,4 @@ public class GameView extends View implements TimerAction, View.OnTouchListener 
 
 }
 
-//Lancer directement au click
+//Lancer directement au clic
